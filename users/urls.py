@@ -1,6 +1,6 @@
 from rest_framework.urls import path
-from .views import user_tweets
+from .views import UserTweets
 
 urlpatterns = [
-    path("<int:pk>/tweets", user_tweets),
+    path("<int:pk>/tweets", UserTweets.as_view()),
 ]

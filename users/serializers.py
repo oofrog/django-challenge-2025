@@ -1,6 +1,12 @@
-from rest_framework import serializers
+from rest_framework.serializers import ModelSerializer
+from .models import User
 
-class TinyUserSerializer(serializers.Serializer):
 
-    pk = serializers.IntegerField(read_only=True)
-    username=serializers.CharField()
+class TinyUserSerializer(ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = (
+            "pk",
+            "username",
+        )
