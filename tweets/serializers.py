@@ -3,7 +3,7 @@ from .models import Tweet
 from users.serializers import TinyUserSerializer
 
 class TweetSerializer(ModelSerializer):
-    user = TinyUserSerializer()
+    user = TinyUserSerializer(read_only=True)
 
     class Meta:
         model = Tweet
