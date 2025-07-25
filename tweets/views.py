@@ -26,7 +26,10 @@ class Tweets(APIView):
             serializer = TweetSerializer(new_tweet)
             return Response(serializer.data)
         else:
-            return Response(serializer.errors)
+            return Response(
+                serializer.errors,
+                status=status.HTTP_400_BAD_REQUEST,
+            )
 
 
 class TweetDetail(APIView):
@@ -58,7 +61,10 @@ class TweetDetail(APIView):
             serializer = TweetSerializer(updated_tweet)
             return Response(serializer.data)
         else:
-            return Response(serializer.errors)
+            return Response(
+                serializer.errors,
+                status=status.HTTP_400_BAD_REQUEST,
+            )
 
     def delete(self, request, pk):
         tweet = self.get_object(pk)
@@ -66,4 +72,3 @@ class TweetDetail(APIView):
             raise PermissionDenied
         tweet.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-    
